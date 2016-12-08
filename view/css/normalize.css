@@ -417,3 +417,18 @@ textarea {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
+body,form,ol,ul,li{padding:0;margin: 0;}
+ol,ul,li{list-style: none;}
+/*清空浮动的代码-start*/
+.clr:after{  
+   content: " ";  
+   display: block;  
+   height: 0;  
+   clear: both;  
+   visibility: hidden;   
+} 
+ .clr {  
+   /* 触发 hasLayout */  
+   zoom: 1;  
+}
+/*清空浮动的代码-end*/

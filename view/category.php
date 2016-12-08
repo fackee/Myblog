@@ -8,106 +8,60 @@
     $data = $result->fetch_all();
     $i=0;
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-        <link rel="stylesheet" href="css/normalize.css" />
-        <link rel="stylesheet" href="css/layout.css" />
-    </head>
-    <body>
     <?php require 'top.php';?>
-    <div class="main">
+    <div class="wrap">
+		<div class="content">
     <?php foreach ($data as $value):?>
-    <?php if($value[0]%2==0){ ?>
-    <div class="block ">
-                    <div class="timeline">
-                        <hr class="tlhrtop"/>
-                         <?php if($value[4] == 'web'){?>
-                        <img class="tlimg" src="images/web.jpg"/>
-                        <?php }else if($value[4]=='android'){?>
-                        <img class="tlimg" src="images/android.png"/>
-                        <?php }?>
-                        <hr class="tlhrbtm"/>
-                    </div>
-                    <div class="timeblockl">
-                    <div class="content">
-                        <h3><a href="<?php echo 'content.php?index='.$value[0];?>"><?php echo $value[1]?></a></h3>
-                        <span><?php echo $value[3]?>/ xiaozhu / code</span>
-                        <p><?php echo $value[5];?>
-                            <a class="continue" href="<?php echo 'content.php?index='.$value[0];?>">继续阅读</a></p>
-                        <div class="tag clr">
-                            <ul>
-                            <?php
-                            $tags = $value[6];
-                            $tarr =  array();
-                            $i=0;
-                            $len = strlen($tags);
-                            $pos = stripos($tags,'，');
-                            while(is_numeric($pos)){
-                                $tarr[$i] = substr($tags,0,$pos);
-                                $tags = substr($tags,$pos+3);
-                                $pos = stripos($tags,'，');
-                                $i++;
-                            }
-                            $tarr[$i] = $tags;
-                            ?>
-                            <?php foreach ($tarr as $val) :?>
-                                <li><?php echo $val ?></li>
-                            <?php endforeach ;?>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sanjiaor"></div>
-                    </div>
-            </div>
-        <?php }else{?>
-        <div class="block ">
-                    <div class="timeline">
-                        <hr class="tlhrtop"/>
-                         <?php if($value[4] == 'web'){?>
-                        <img class="tlimg" src="images/web.jpg"/>
-                        <?php }else if($value[4]=='android'){?>
-                        <img class="tlimg" src="images/android.png"/>
-                        <?php }?>
-                        <hr class="tlhrbtm"/>
-                    </div>
-                    <div class="timeblockr">
-                        <div class="sanjiaol"></div>
-                    <div class="content">
-                        <h3><a href="<?php echo 'content.php?index='.$value[0];?>"><?php echo $value[1]?></h3>
-                         <span><?php echo $value[3]?>/ xiaozhu / code</span>
-                           <p><?php echo $value[5];?>
-                            <a class="continue" href="<?php echo 'content.php?index='.$value[0];?>">继续阅读</a></p>
-                        <div class="tag clr">
-                            <ul>
-                                 <?php
-                            $tags = $value[6];
-                            $tarr =  array();
-                            $i=0;
-                            $len = strlen($tags);
-                            $pos = stripos($tags,'，');
-                            while(is_numeric($pos)){
-                                $tarr[$i] = substr($tags,0,$pos);
-                                $tags = substr($tags,$pos+3);
-                                $pos = stripos($tags,'，');
-                                $i++;
-                            }
-                            $tarr[$i] = $tags;
-                            ?>
-                            <?php foreach ($tarr as $val) :?>
-                                <li><?php echo $val ?></li>
-                            <?php endforeach ;?>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    </div>
-            </div>
-        <?php }?>
+    <?php if($value[0]%2==0):?>
+    	<div class="timeline-left">
+					<div class="card-left">
+						<h3><a href="content.php?index=<?=$value[0]?>"><?=$value[1]?></a></h3>
+						<span>xiaozhu / code /	<?=$value[3]?></span>
+						<p><?=$value[5]?>
+							<a href="content.php?index=<?=$value[0]?>">More...</a>
+						</p>
+						<div class="tag clr">
+							<ul>
+							<?php $tagArr = explode("，",$value[6]);?>
+							<?php foreach($tagArr as $tag):?>
+								<li><?=$tag?></li>
+							<?php endforeach;?>
+							</ul>
+						</div>
+					</div>
+					<div class="forword-right"></div>
+					<?php if($value[4]=="web"):?>
+						<img src="images/web.jpg" />
+					<?php else:?>
+						<img src="images/android.png" />
+					<?php endif;?>	
+				</div>
+   	<?php else:?>
+   		<div class="timeline-right">
+					<div class="card-right">
+						<h3><a href="content.php?index=<?=$value[0]?>"><?=$value[1]?></a></h3>
+						<span>xiaozhu / code /	<?=$value[3]?></span>
+						<p><?=$value[5]?>
+							<a href="content.php?index=<?=$value[0]?>">More...</a>
+						</p>
+						<div class="tag clr">
+							<ul>
+							<?php $tagArr = explode("，",$value[6]);?>
+							<?php foreach($tagArr as $tag):?>
+								<li><?=$tag?></li>
+							<?php endforeach;?>
+							</ul>
+						</div>
+					</div>
+					<div class="forword-left"></div>
+					<?php if($value[4]=="web"):?>
+						<img src="images/web.jpg" />
+					<?php else:?>
+						<img src="images/android.png" />
+					<?php endif;?>
+				</div>
+   	<?php endif;?>
     <?php endforeach;?>
+    	</div>
     </div>
     <?php require 'bottom.php';?>
-    </body>
-</html>

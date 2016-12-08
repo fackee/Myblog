@@ -9,30 +9,30 @@
        $countarr[$va[0]] = $tmp['count(*)'];
     }
 ?>
-<div class="foot">
-            <div class="fcontent">
-            <div class="atccategory">
-                <h6>文章分类</h6>
-                <ul>
-                <?php foreach($data as $v) :?>
-                    <li><a href="<?php echo "category.php?cate=".$v[0] ;?>"><?php echo $v[0];?></a><?php echo "(".$countarr[$v[0]].")"?></li>
-                <?php endforeach ;?>
-                </ul>
-            </div>
-            <div class="contact">
-                <h6>杂杂杂杂</h6>
-                <ul>
-                    <li><a href="#">github</a></li>
-                    <li><a href="#">weibo</a></li>
-                    <li><a href="#">stackoverflow</a></li>
-                    <li><a href="#">qq</a></li>
-                    <li><a href="#">weixn</a></li>
-                </ul>
-            </div>
-            </div>
-        </div>
-        <div class="cprt"><p>Copyright ZJX© 2016 - 10 - 10</p>
-</div>
+		<div class="category">
+			<div class="cmain">
+				<ul class="atcUl">
+					<li class="atcLi">Article Category</li>
+					<?php foreach($data as $v) :?>
+                    <li class="atcLi"><a href="<?php echo "category.php?cate=".$v[0] ;?>"><?php echo $v[0];?></a><?php echo "(".$countarr[$v[0]].")"?></li>
+                	<?php endforeach ;?>
+				</ul>
+				<ul class="elseUl">
+					<li class="elseLi">Links</li>
+					<li class="elseLi">
+						<a href="#">github</a>
+					</li>
+					<li class="elseLi" id="show">weibo</li>
+					<li class="elseLi">weixin</li>
+				</ul>
+				<img src="images/1480519208.png" class="weibo"/>
+			</div>
+		</div>
+		<div class="cyrt">
+			Copyright xs© 2016-10-10
+		</div>
+	</body>
+</html>
 <?php
 $conn->close();
 ?>
